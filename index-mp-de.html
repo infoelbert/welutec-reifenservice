@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reifenwechsel in Martell – schnell, professionell, lokal. Jetzt Termin sichern!">
+    <title>Reifenwechsel Martell – MP Fahrzeugtechnik</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red:        #e30613;
+            --red-d:      #b50010;
+            --red-l:      rgba(227,6,19,0.12);
+            --red-m:      rgba(227,6,19,0.22);
+            --charcoal:   #f0f0f0;
+            --text:       #d1d5db;
+            --muted:      #9ca3af;
+            --bg:         #111111;
+            --bg2:        #1a1a1a;
+            --bg3:        #222222;
+            --border:     rgba(255,255,255,0.1);
+            --border-r:   rgba(227,6,19,0.35);
+            --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
+            --shadow:     0 4px 16px rgba(0,0,0,0.5);
+            --shadow-r:   0 4px 20px rgba(227,6,19,0.25);
+            --r:          10px;
+            --rL:         16px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--bg); overflow-x: hidden; line-height: 1.6; }
+        h1,h2,h3,h4 { line-height: 1.15; font-weight: 800; color: var(--charcoal); letter-spacing: -0.02em; }
+        h1 { font-size: clamp(1.9rem, 4vw, 3rem); }
+        h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+        h3 { font-size: 1.1rem; }
+        p  { color: var(--muted); line-height: 1.7; }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: sticky; top: 0; z-index: 200;
+            background: #111111; border-bottom: 1px solid var(--border);
+            box-shadow: 0 1px 10px rgba(0,0,0,0.5);
+            padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 70px;
+        }
+        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-svg { width: 160px; height: 44px; }
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-phone {
+            display: flex; align-items: center; gap: 0.4rem;
+            color: var(--charcoal); text-decoration: none;
+            font-weight: 600; font-size: 0.9rem;
+        }
+        .nav-phone:hover { color: var(--red); }
+        .nav-cta {
+            background: var(--red); color: #fff;
+            padding: 0.6rem 1.3rem; border-radius: var(--r);
+            text-decoration: none; font-weight: 700; font-size: 0.88rem;
+            transition: background 0.2s, transform 0.2s; white-space: nowrap;
+        }
+        .nav-cta:hover { background: var(--red-d); transform: translateY(-1px); }
+
+        /* ===== HERO SPLIT ===== */
+        .hero {
+            display: grid; grid-template-columns: 1fr 420px;
+            min-height: calc(100vh - 70px); max-height: 900px;
+        }
+        .hero-left { position: relative; overflow: hidden; background: #0a0a0a; }
+        .hero-img {
+            position: absolute; inset: 0;
+            background-image: url('https://www.mp-fahrzeugtechnik.it/mp-background.jpg');
+            background-size: cover; background-position: center;
+            opacity: 0.4; transition: transform 8s ease;
+        }
+        .hero-img.loaded { transform: scale(1.04); }
+        .hero-overlay-left {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(181,0,16,0.6) 0%, rgba(10,10,10,0.88) 100%);
+        }
+        .hero-left-content {
+            position: relative; z-index: 2; padding: 3.5rem 3rem;
+            height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 1.8rem;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9); padding: 0.35rem 0.9rem;
+            border-radius: 100px; font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase; width: fit-content;
+        }
+        .hero-badge-dot { width: 7px; height: 7px; background: #4ade80; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+        .hero-title { color: #fff; }
+        .hero-title span { color: #ff8080; }
+        .hero-bullets { display: flex; flex-direction: column; gap: 0.7rem; }
+        .hero-bullet {
+            display: flex; align-items: center; gap: 0.75rem;
+            color: rgba(255,255,255,0.9); font-size: 0.95rem; font-weight: 500;
+        }
+        .bullet-icon {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: rgba(227,6,19,0.35); border: 1px solid rgba(255,128,128,0.4);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; color: #ff8080;
+        }
+        .bullet-icon svg { width: 14px; height: 14px; }
+        .hero-stars {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .stars-row { display: flex; gap: 2px; }
+        .stars-row svg { width: 18px; height: 18px; fill: #fbbf24; }
+        .stars-text { font-size: 0.85rem; color: rgba(255,255,255,0.8); font-weight: 500; }
+        .stars-text strong { color: #fff; }
+
+        /* ===== BOOKING CARD (Hero Right) ===== */
+        .hero-right {
+            background: var(--bg2); border-left: 1px solid var(--border);
+            overflow-y: auto; display: flex; flex-direction: column;
+        }
+        .booking-card { padding: 2rem 1.8rem; flex: 1; }
+        .booking-card-title { font-size: 1.15rem; font-weight: 800; color: var(--charcoal); margin-bottom: 0.25rem; }
+        .booking-card-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+        /* Calendar */
+        .cal-wrap {
+            background: #222; border: 1px solid var(--border);
+            border-radius: var(--rL); padding: 1.1rem; margin-bottom: 1rem; box-shadow: var(--shadow-sm);
+        }
+        .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+        .cal-month-lbl { font-weight: 800; font-size: 0.92rem; color: var(--charcoal); }
+        .cal-nav-btns { display: flex; gap: 0.3rem; }
+        .cal-btn {
+            width: 30px; height: 30px; border: 1px solid var(--border);
+            border-radius: 7px; background: var(--bg3); color: var(--muted); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; transition: all 0.15s;
+        }
+        .cal-btn:hover { border-color: var(--red); color: var(--red); background: var(--red-l); }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+        .cal-wday { text-align: center; font-size: 0.68rem; font-weight: 700; color: var(--muted); padding: 4px 0; }
+        .cal-day {
+            aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+            border-radius: 7px; font-size: 0.82rem; font-weight: 500; cursor: pointer;
+            transition: all 0.15s; border: 1px solid transparent; color: var(--charcoal);
+        }
+        .cal-day:hover:not(.past):not(.booked):not(.empty):not(.sunday) {
+            background: var(--red-l); color: var(--red); border-color: var(--red-m);
+        }
+        .cal-day.past, .cal-day.sunday { color: #555; cursor: not-allowed; }
+        .cal-day.booked { color: #f87171; cursor: not-allowed; text-decoration: line-through; }
+        .cal-day.today  { border-color: var(--red); color: var(--red); font-weight: 700; }
+        .cal-day.chosen { background: var(--red); color: #fff; font-weight: 700; border-color: var(--red); }
+        .cal-day.empty  { cursor: default; }
+
+        /* Time slots */
+        .slots-wrap { background: #222; border: 1px solid var(--border); border-radius: var(--rL); padding: 1rem; margin-bottom: 1rem; box-shadow: var(--shadow-sm); display: none; }
+        .slots-header { font-size: 0.78rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.65rem; display: flex; align-items: center; gap: 0.4rem; }
+        .slots-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.35rem; }
+        .slot {
+            padding: 0.45rem 0.2rem; text-align: center; border-radius: 7px;
+            border: 1px solid var(--border); background: var(--bg3);
+            font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.15s; color: var(--charcoal);
+        }
+        .slot:hover:not(.taken) { border-color: var(--red); color: var(--red); background: var(--red-l); }
+        .slot.taken { background: rgba(248,113,113,0.08); border-color: rgba(248,113,113,0.2); color: #f87171; cursor: not-allowed; text-decoration: line-through; opacity: 0.7; }
+        .slot.chosen { background: var(--red); border-color: var(--red); color: #fff; }
+
+        /* Form */
+        .bform { display: flex; flex-direction: column; gap: 0.7rem; }
+        .fg label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.3rem; letter-spacing: 0.02em; }
+        .fg input {
+            width: 100%; background: #222; border: 1px solid var(--border);
+            border-radius: 8px; padding: 0.65rem 0.85rem;
+            color: var(--charcoal); font-size: 0.9rem; font-family: inherit;
+            outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .fg input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(227,6,19,0.15); }
+        .fg input::placeholder { color: #444; }
+        .sel-info {
+            background: var(--red-l); border: 1px solid var(--red-m);
+            border-radius: 8px; padding: 0.7rem 0.9rem;
+            font-size: 0.8rem; color: #ff8080; font-weight: 600; display: none;
+        }
+        .btn-submit {
+            width: 100%; padding: 0.9rem; background: var(--red); color: #fff; border: none;
+            border-radius: var(--r); font-size: 0.97rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            gap: 0.5rem; transition: all 0.25s; font-family: inherit; margin-top: 0.25rem;
+        }
+        .btn-submit:hover { background: var(--red-d); transform: translateY(-1px); box-shadow: var(--shadow-r); }
+        .btn-submit svg { width: 17px; height: 17px; }
+
+        /* Form success */
+        .form-ok { display: none; text-align: center; padding: 2.5rem 1rem; }
+        .form-ok.show { display: block; }
+        .ok-icon {
+            width: 60px; height: 60px; background: rgba(74,222,128,0.1);
+            border: 2px solid rgba(74,222,128,0.4); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.2rem; color: #4ade80;
+        }
+        .form-ok h3 { color: var(--charcoal); margin-bottom: 0.4rem; }
+        .form-ok p  { font-size: 0.88rem; }
+
+        /* ===== TRUST BAR ===== */
+        .trust-bar {
+            background: #0a0a0a; color: #fff;
+            padding: 1.2rem 2rem; border-top: 1px solid var(--border);
+        }
+        .trust-bar-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; gap: 2.5rem; align-items: center; justify-content: center; flex-wrap: wrap;
+        }
+        .tb-item { display: flex; align-items: center; gap: 0.55rem; font-size: 0.88rem; font-weight: 600; white-space: nowrap; }
+        .tb-item svg { width: 18px; height: 18px; color: #ff8080; flex-shrink: 0; }
+        .tb-stars { display: flex; gap: 2px; }
+        .tb-stars svg { width: 16px; height: 16px; fill: #fbbf24; }
+
+        /* ===== SECTIONS ===== */
+        section.sec { padding: 5rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .sec-label {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            color: var(--red); font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem;
+        }
+        .sec-label::before { content: ''; width: 20px; height: 2px; background: var(--red); }
+
+        /* Scroll reveal */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.from-left  { transform: translateX(-30px); }
+        .reveal.from-right { transform: translateX(30px); }
+        .reveal.visible    { opacity: 1; transform: translate(0); }
+        .d1{transition-delay:0.1s} .d2{transition-delay:0.2s}
+        .d3{transition-delay:0.3s} .d4{transition-delay:0.4s} .d5{transition-delay:0.5s}
+
+        /* ===== TESTIMONIALS ===== */
+        .testi-sec { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+        .testi-card {
+            background: var(--bg3); border: 1px solid var(--border); border-radius: var(--rL);
+            padding: 1.5rem; display: flex; flex-direction: column; gap: 0.9rem;
+            transition: all 0.3s; position: relative;
+        }
+        .testi-card:hover { border-color: var(--border-r); box-shadow: var(--shadow-r); transform: translateY(-3px); }
+        .testi-card::before {
+            content: '"'; position: absolute; top: 8px; right: 16px;
+            font-size: 5rem; line-height: 1; color: rgba(227,6,19,0.12);
+            font-family: Georgia, serif; font-weight: 900; pointer-events: none;
+        }
+        .testi-stars { display: flex; gap: 2px; }
+        .testi-stars svg { width: 16px; height: 16px; fill: #fbbf24; }
+        .testi-text { font-size: 0.9rem; color: var(--text); line-height: 1.65; font-style: italic; flex: 1; }
+        .testi-author { display: flex; align-items: center; gap: 0.65rem; }
+        .testi-av {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--red-d), var(--red));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.88rem; font-weight: 800; color: #fff; flex-shrink: 0;
+        }
+        .testi-name { font-size: 0.85rem; font-weight: 700; color: var(--charcoal); }
+        .testi-loc  { font-size: 0.75rem; color: var(--muted); }
+
+        /* ===== SERVICES ===== */
+        .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+        .svc-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.8rem; }
+        .svc-list li {
+            display: flex; align-items: flex-start; gap: 0.85rem;
+            padding: 1rem 1.2rem; background: var(--bg2); border: 1px solid var(--border);
+            border-radius: var(--r); transition: all 0.25s;
+        }
+        .svc-list li:hover { border-color: var(--border-r); transform: translateX(4px); box-shadow: var(--shadow-sm); }
+        .chk {
+            width: 22px; height: 22px; border-radius: 50%; background: var(--red);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+        }
+        .chk svg { width: 11px; height: 11px; color: #fff; }
+        .svc-name { font-weight: 700; color: var(--charcoal); font-size: 0.9rem; }
+        .svc-det  { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+        .svc-img  { border-radius: var(--rL); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); aspect-ratio: 4/3; }
+        .svc-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* ===== CONTACT ===== */
+        .contact-sec { background: var(--bg2); }
+        .contact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+        .con-card {
+            background: var(--bg3); border: 1px solid var(--border); border-radius: var(--rL);
+            padding: 1.8rem; transition: all 0.25s;
+        }
+        .con-card:hover { border-color: var(--border-r); box-shadow: var(--shadow); transform: translateY(-3px); }
+        .con-icon {
+            width: 44px; height: 44px; background: var(--red-l); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; color: var(--red); margin-bottom: 1rem;
+        }
+        .con-icon svg { width: 20px; height: 20px; }
+        .con-lbl { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
+        .con-body { font-size: 0.88rem; color: var(--text); line-height: 1.8; }
+        .wa-btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: #25d366; color: #fff; padding: 0.6rem 1rem;
+            border-radius: 8px; text-decoration: none; font-weight: 700;
+            font-size: 0.82rem; margin-top: 0.8rem; transition: all 0.2s;
+        }
+        .wa-btn:hover { background: #22c55e; transform: translateY(-2px); }
+
+        /* ===== RATING BAR ===== */
+        .rating-bar {
+            background: #0a0a0a; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            padding: 1.2rem 2rem;
+        }
+        .rating-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
+        }
+        .r-block { display: flex; align-items: center; gap: 0.7rem; }
+        .r-score { font-size: 2.2rem; font-weight: 900; color: var(--charcoal); line-height: 1; letter-spacing: -0.04em; }
+        .r-stars { display: flex; gap: 2px; }
+        .r-stars svg { width: 20px; height: 20px; fill: #fbbf24; }
+        .r-count { font-size: 0.78rem; color: var(--muted); }
+        .r-sep { width: 1px; height: 36px; background: var(--border); }
+        .r-platform { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+        .g-dot { width: 9px; height: 9px; border-radius: 50%; background: #4285f4; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a0a0a; color: rgba(255,255,255,0.5);
+            padding: 2rem 2rem 6rem; border-top: 1px solid var(--border);
+        }
+        .foot-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+        }
+        .foot-logo-text { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; }
+        .foot-logo-text .mp { color: #fff; }
+        .foot-logo-text .ft { color: var(--red); }
+        .foot-sub { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 0.2rem; }
+        .foot-links { font-size: 0.8rem; display: flex; gap: 1rem; }
+        .foot-links a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+        .foot-links a:hover { color: var(--red); }
+
+        /* ===== STICKY CTA (mobile) ===== */
+        .sticky-cta {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 150;
+            background: #1a1a1a; border-top: 1px solid var(--border);
+            padding: 0.8rem 1.2rem; gap: 0.75rem; align-items: center;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
+        }
+        @media(max-width:768px) { .sticky-cta { display: flex; } }
+        .sticky-cta a { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.85rem; background: var(--red); color: #fff; border-radius: var(--r); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+        .sticky-phone { display: flex; align-items: center; gap: 0.4rem; color: var(--charcoal); text-decoration: none; font-weight: 700; font-size: 0.88rem; white-space: nowrap; }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:900px) {
+            .hero { grid-template-columns: 1fr; max-height: none; min-height: auto; }
+            .hero-left { min-height: 50vh; }
+            .hero-left-content { padding: 2.5rem 1.5rem; }
+            .hero-right { border-left: none; border-top: 1px solid var(--border); }
+            .booking-card { padding: 1.5rem; }
+            .svc-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .svc-img { display: none; }
+            .contact-grid { grid-template-columns: 1fr; }
+            footer { padding-bottom: 5rem; }
+        }
+        @media(max-width:600px) {
+            .testi-grid { grid-template-columns: 1fr; }
+            .nav-right .nav-phone { display: none; }
+            section.sec { padding: 3.5rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <a href="#" class="nav-logo" aria-label="MP Fahrzeugtechnik">
+        <svg class="logo-svg" viewBox="0 0 220 52" xmlns="http://www.w3.org/2000/svg">
+            <!-- Wheels -->
+            <circle cx="14" cy="36" r="6" fill="none" stroke="#e30613" stroke-width="3"/>
+            <circle cx="14" cy="36" r="2" fill="#e30613"/>
+            <circle cx="35" cy="36" r="6" fill="none" stroke="#e30613" stroke-width="3"/>
+            <circle cx="35" cy="36" r="2" fill="#e30613"/>
+            <!-- Car body -->
+            <path d="M4 32 L4 26 L10 18 L28 18 L34 24 L44 24 L46 32 Z" fill="#e30613" opacity="0.9"/>
+            <!-- Windshield cutout -->
+            <path d="M11 19 L14 24 L28 24 L25 19 Z" fill="#111111"/>
+            <!-- MP text -->
+            <text x="54" y="36" font-family="Inter,system-ui,sans-serif" font-weight="900" font-size="26" fill="#f0f0f0" letter-spacing="-0.5">MP</text>
+            <!-- Subtitle -->
+            <text x="54" y="49" font-family="Inter,system-ui,sans-serif" font-weight="400" font-size="9.5" fill="#9ca3af" letter-spacing="0.3">Fahrzeugtechnik · KFZ-Mechatroniker</text>
+        </svg>
+    </a>
+    <div class="nav-right">
+        <a href="tel:+393888642598" class="nav-phone">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.38 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +39 388 864 2598
+        </a>
+        <a href="#buchen" class="nav-cta">Termin buchen →</a>
+    </div>
+</nav>
+
+<!-- HERO SPLIT -->
+<div class="hero" id="buchen">
+    <div class="hero-left">
+        <div class="hero-img" id="heroImg"></div>
+        <div class="hero-overlay-left"></div>
+        <div class="hero-left-content">
+            <span class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                Martell · Vinschgau · Südtirol
+            </span>
+            <h1 class="hero-title">
+                Ihr Reifenwechsel<br>
+                in <span>Martell</span> –<br>
+                schnell & professionell
+            </h1>
+            <div class="hero-bullets">
+                <div class="hero-bullet">
+                    <div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    Online Termin – kein Warten am Telefon
+                </div>
+                <div class="hero-bullet">
+                    <div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    Reifenwechsel + Kurzcheck inklusive
+                </div>
+                <div class="hero-bullet">
+                    <div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    Erfahrener KFZ-Mechatroniker · Faire Preise
+                </div>
+                <div class="hero-bullet">
+                    <div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    Direkt bei Ihnen in der Gemeinde
+                </div>
+            </div>
+            <div class="hero-stars">
+                <div class="stars-row">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <span class="stars-text"><strong>5.0</strong> · 80+ zufriedene Kunden</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-right">
+        <div class="booking-card">
+            <div id="formBody">
+                <div class="booking-card-title">📅 Termin vereinbaren</div>
+                <p class="booking-card-sub">Wählen Sie Datum & Uhrzeit – wir bestätigen innerhalb 24 Std.</p>
+                <div class="cal-wrap">
+                    <div class="cal-head">
+                        <span class="cal-month-lbl" id="calMonth">April 2026</span>
+                        <div class="cal-nav-btns">
+                            <button class="cal-btn" id="calPrev">‹</button>
+                            <button class="cal-btn" id="calNext">›</button>
+                        </div>
+                    </div>
+                    <div class="cal-grid" id="calDays">
+                        <div class="cal-wday">Mo</div><div class="cal-wday">Di</div>
+                        <div class="cal-wday">Mi</div><div class="cal-wday">Do</div>
+                        <div class="cal-wday">Fr</div><div class="cal-wday">Sa</div>
+                        <div class="cal-wday">So</div>
+                    </div>
+                </div>
+                <div class="slots-wrap" id="slotsWrap">
+                    <div class="slots-header">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span id="slotsLabel">Uhrzeit wählen</span>
+                    </div>
+                    <div class="slots-grid" id="slotsGrid"></div>
+                </div>
+                <div class="sel-info" id="selInfo"></div>
+                <div class="bform" id="bform">
+                    <div class="fg">
+                        <label for="fname">Name *</label>
+                        <input type="text" id="fname" placeholder="Max Mustermann" required>
+                    </div>
+                    <div class="fg">
+                        <label for="fphone">Telefon *</label>
+                        <input type="tel" id="fphone" placeholder="+39 123 456 789" required>
+                    </div>
+                    <div class="fg">
+                        <label for="fcar">Fahrzeug</label>
+                        <input type="text" id="fcar" placeholder="z.B. VW Golf, 205/55 R16">
+                    </div>
+                    <button class="btn-submit" onclick="submitForm()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Termin sichern
+                    </button>
+                </div>
+            </div>
+            <div class="form-ok" id="formOk">
+                <div class="ok-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h3>Termin angefragt!</h3>
+                <p>Vielen Dank! Wir melden uns innerhalb von 24 Stunden zur Bestätigung.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+    <div class="trust-bar-inner">
+        <div class="tb-item">
+            <div class="tb-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            5.0 Google Bewertung
+        </div>
+        <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Termin in 2 Min. gebucht</div>
+        <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> KFZ-Mechatroniker</div>
+        <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Lokal in Martell</div>
+        <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 300+ Reifenwechsel</div>
+    </div>
+</div>
+
+<!-- RATING BAR -->
+<div class="rating-bar">
+    <div class="rating-inner">
+        <div class="r-block">
+            <div class="r-score">5.0</div>
+            <div>
+                <div class="r-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <div class="r-count">Basierend auf 80+ Bewertungen</div>
+            </div>
+        </div>
+        <div class="r-sep"></div>
+        <div class="r-platform"><div class="g-dot"></div> Google Bewertungen</div>
+        <div class="r-sep"></div>
+        <div class="r-platform">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Geprüfter KFZ-Betrieb
+        </div>
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="sec testi-sec" id="bewertungen">
+    <div class="container">
+        <div class="sec-label reveal">Kundenstimmen</div>
+        <h2 class="reveal">Was unsere Kunden sagen</h2>
+        <div class="testi-grid">
+            <div class="testi-card reveal d1">
+                <div class="testi-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="testi-text">"Super schneller Service – Termin online gebucht und alles hat perfekt funktioniert. War in unter 30 Minuten fertig."</p>
+                <div class="testi-author">
+                    <div class="testi-av">T</div>
+                    <div><div class="testi-name">Thomas M.</div><div class="testi-loc">Martell</div></div>
+                </div>
+            </div>
+            <div class="testi-card reveal d2">
+                <div class="testi-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="testi-text">"Sehr freundlich und professionell – kommen definitiv wieder. Bremsen wurden gleich mitgecheckt, ohne Extra-Aufpreis!"</p>
+                <div class="testi-author">
+                    <div class="testi-av">A</div>
+                    <div><div class="testi-name">Andrea K.</div><div class="testi-loc">Schlanders</div></div>
+                </div>
+            </div>
+            <div class="testi-card reveal d3">
+                <div class="testi-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="testi-text">"Reifenwechsel blitzschnell und unkompliziert. Kurzer Weg, toller Service, faire Preise – mehr braucht man nicht."</p>
+                <div class="testi-author">
+                    <div class="testi-av">H</div>
+                    <div><div class="testi-name">Hans R.</div><div class="testi-loc">Latsch</div></div>
+                </div>
+            </div>
+            <div class="testi-card reveal d4">
+                <div class="testi-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="testi-text">"Beim Wechsel wurde gleich der Bremsbelag kontrolliert, ohne dass ich fragen musste. Das ist echter Kundenservice!"</p>
+                <div class="testi-author">
+                    <div class="testi-av">F</div>
+                    <div><div class="testi-name">Franz W.</div><div class="testi-loc">Sulden</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="leistungen" style="background: var(--bg);">
+    <div class="container">
+        <div class="sec-label reveal">Leistungen</div>
+        <div class="svc-grid">
+            <div>
+                <h2 class="reveal">Mehr als nur ein<br>Reifenwechsel</h2>
+                <p class="reveal" style="margin-top:0.8rem">Wir wechseln Ihre Reifen schnell und fachgerecht – und checken Ihr Fahrzeug dabei gleich mit.</p>
+                <ul class="svc-list">
+                    <li class="reveal d1">
+                        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><div class="svc-name">Sommer- & Winterreifenwechsel</div><div class="svc-det">Ab-/Aufmontage & Auswuchten inklusive</div></div>
+                    </li>
+                    <li class="reveal d2">
+                        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><div class="svc-name">Reifeneinlagerung</div><div class="svc-det">Sicher und trocken bis zur nächsten Saison</div></div>
+                    </li>
+                    <li class="reveal d3">
+                        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><div class="svc-name">Reifendruck-Kontrolle</div><div class="svc-det">Optimaler Druck für Sicherheit & Effizienz</div></div>
+                    </li>
+                    <li class="reveal d4">
+                        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><div class="svc-name">Kurzcheck Bremsen & Fahrwerk</div><div class="svc-det">Sichtprüfung beim Reifenwechsel kostenlos</div></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="svc-img reveal from-right">
+                <img src="https://www.mp-fahrzeugtechnik.it/mp-background.jpg" alt="Reifenwechsel MP Fahrzeugtechnik Martell" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact-sec" id="kontakt">
+    <div class="container">
+        <div class="sec-label reveal">Kontakt</div>
+        <h2 class="reveal">So finden Sie uns</h2>
+        <div class="contact-grid">
+            <div class="con-card reveal d1">
+                <div class="con-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <div class="con-lbl">Adresse</div>
+                <div class="con-body">
+                    <strong>MP Fahrzeugtechnik</strong><br>
+                    Ennewasser 242<br>
+                    39020 Martell, Südtirol<br><br>
+                    <a href="https://maps.google.com/?q=Ennewasser+242+39020+Martell" style="color:var(--red);text-decoration:none;font-weight:700;font-size:0.82rem" target="_blank">→ Google Maps öffnen</a>
+                </div>
+            </div>
+            <div class="con-card reveal d2">
+                <div class="con-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="con-lbl">Öffnungszeiten</div>
+                <div class="con-body">
+                    <strong>Mo – Fr</strong>&ensp;08:00 – 12:00<br>
+                    &emsp;&emsp;&emsp;&emsp;13:30 – 17:30<br>
+                    <strong>Samstag</strong>&ensp;08:00 – 12:00<br>
+                    <strong>Sonntag</strong>&ensp;Geschlossen<br><br>
+                    <span style="color:var(--red);font-size:0.8rem;font-weight:700">★ Reifenwechsel auch samstags</span>
+                </div>
+            </div>
+            <div class="con-card reveal d3">
+                <div class="con-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.38 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                <div class="con-lbl">Kontakt</div>
+                <div class="con-body">
+                    <a href="tel:+393888642598" style="color:var(--text);text-decoration:none;display:block;margin-bottom:0.3rem">📞 +39 388 864 2598</a>
+                    <a href="mailto:info@mp-fahrzeugtechnik.it" style="color:var(--text);text-decoration:none">✉️ info@mp-fahrzeugtechnik.it</a>
+                    <a href="https://wa.me/393888642598" class="wa-btn" target="_blank">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        WhatsApp schreiben
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="foot-inner">
+        <div>
+            <div class="foot-logo-text"><span class="mp">MP</span> <span class="ft">Fahrzeugtechnik</span></div>
+            <div class="foot-sub">KFZ-Mechatroniker · Ennewasser 242, 39020 Martell, Südtirol</div>
+        </div>
+        <div class="foot-links">
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+            <a href="https://www.mp-fahrzeugtechnik.it" target="_blank">Website</a>
+        </div>
+    </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+    <a href="#buchen">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Termin buchen
+    </a>
+    <a href="tel:+393888642598" class="sticky-phone">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.38 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Anrufen
+    </a>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+document.getElementById('heroImg').classList.add('loaded');
+
+const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+const monthNamesDE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+const monthShortDE = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+let calDate = new Date(2026, 3, 1);
+let selDate = null, selTime = null;
+
+const fullyBooked = {
+    '2026-3': [3,8,14,19,24],
+    '2026-4': [4,9,14,20,27],
+};
+const takenByDate = {
+    '2026-04-15': ['09:00','14:00','16:00'],
+    '2026-04-16': ['08:00','11:00'],
+    '2026-04-22': ['09:00','10:00','15:00'],
+    '2026-04-28': ['08:00','14:00'],
+    '2026-05-07': ['10:00','11:00','15:00'],
+};
+const slots = ['08:00','09:00','10:00','11:00','14:00','15:00','16:00','17:00'];
+
+function renderCal() {
+    const y = calDate.getFullYear(), m = calDate.getMonth();
+    document.getElementById('calMonth').textContent = `${monthNamesDE[m]} ${y}`;
+    const first = new Date(y, m, 1).getDay();
+    const days  = new Date(y, m + 1, 0).getDate();
+    const off   = first === 0 ? 6 : first - 1;
+    const today = new Date(); today.setHours(0,0,0,0);
+    const bookedList = fullyBooked[`${y}-${m}`] || [];
+    const cont = document.getElementById('calDays');
+    cont.innerHTML = `
+        <div class="cal-wday">Mo</div><div class="cal-wday">Di</div>
+        <div class="cal-wday">Mi</div><div class="cal-wday">Do</div>
+        <div class="cal-wday">Fr</div><div class="cal-wday">Sa</div>
+        <div class="cal-wday">So</div>`;
+    for (let i = 0; i < off; i++) cont.innerHTML += '<div class="cal-day empty"></div>';
+    for (let d = 1; d <= days; d++) {
+        const date = new Date(y, m, d);
+        const ds   = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const past   = date < today;
+        const booked = bookedList.includes(d);
+        const sunday = date.getDay() === 0;
+        const isToday= date.getTime() === today.getTime();
+        const chosen = selDate === ds;
+        let cls = 'cal-day';
+        if (sunday) cls += ' sunday';
+        else if (past) cls += ' past';
+        else if (booked) cls += ' booked';
+        if (isToday) cls += ' today';
+        if (chosen)  cls += ' chosen';
+        const ok = !past && !booked && !sunday;
+        cont.innerHTML += `<div class="${cls}"${ok ? ` onclick="pickDate('${ds}',${d},${m},${y})"` : ''}>${d}</div>`;
+    }
+}
+
+function pickDate(ds, d, m, y) {
+    selDate = ds; selTime = null; renderCal();
+    const wrap = document.getElementById('slotsWrap');
+    wrap.style.display = 'block';
+    document.getElementById('slotsLabel').textContent = `${d}. ${monthShortDE[m]} ${y} – Uhrzeit wählen`;
+    const taken = takenByDate[ds] || [];
+    document.getElementById('slotsGrid').innerHTML = slots.map(t => {
+        const isTaken = taken.includes(t);
+        const cls = 'slot' + (isTaken ? ' taken' : '') + (selTime === t ? ' chosen' : '');
+        return `<div class="${cls}"${!isTaken ? ` onclick="pickTime('${t}','${ds}',${d},${m},${y})"` : ''}>${t}</div>`;
+    }).join('');
+    updateInfo();
+}
+
+function pickTime(t, ds, d, m, y) {
+    selTime = t; pickDate(ds, d, m, y);
+}
+
+function updateInfo() {
+    const el = document.getElementById('selInfo');
+    if (selDate && selTime) {
+        const [y,mo,d] = selDate.split('-');
+        el.textContent = `✓ Gewählter Termin: ${d}. ${monthNamesDE[parseInt(mo)-1]} ${y} um ${selTime} Uhr`;
+        el.style.display = 'block';
+    } else if (selDate) {
+        el.style.display = 'none';
+    }
+}
+
+document.getElementById('calPrev').onclick = () => { calDate.setMonth(calDate.getMonth()-1); renderCal(); };
+document.getElementById('calNext').onclick = () => { calDate.setMonth(calDate.getMonth()+1); renderCal(); };
+renderCal();
+
+function submitForm() {
+    if (!document.getElementById('fname').value.trim()) { alert('Bitte Name eingeben.'); return; }
+    if (!document.getElementById('fphone').value.trim()){ alert('Bitte Telefonnummer eingeben.'); return; }
+    if (!selDate || !selTime) { alert('Bitte Datum und Uhrzeit wählen.'); return; }
+    document.getElementById('formBody').style.display = 'none';
+    document.getElementById('formOk').classList.add('show');
+}
+</script>
+</body>
+</html>
