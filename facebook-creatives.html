@@ -75,9 +75,9 @@
         }
         .c1-bg {
             position: absolute; inset: 0;
-            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80');
+            background-image: url('https://images.unsplash.com/photo-1591768793355-74d04bb6608f?w=1200&q=80');
             background-size: cover; background-position: center;
-            opacity: 0.18;
+            opacity: 0.22;
         }
         .c1-content {
             position: relative; z-index: 2;
@@ -147,9 +147,9 @@
         }
         .c2-bg {
             position: absolute; inset: 0;
-            background-image: url('https://images.unsplash.com/photo-1527515637462-cff94edd54a2?w=1200&q=80');
-            background-size: cover; background-position: center top;
-            opacity: 0.3;
+            background-image: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80');
+            background-size: cover; background-position: center;
+            opacity: 0.35;
         }
         .c2-gradient {
             position: absolute; inset: 0;
@@ -358,7 +358,19 @@
             <div class="c2-gradient"></div>
             <div class="c2-content">
                 <div class="c2-eyebrow">Auto Sagmeister · Reifenwechsel</div>
-                <div class="c2-h1">Sicher in den<br>Sommer. ☀️</div>
+                <!-- Winter → Sommer Pill -->
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+                    <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:6px 14px;">
+                        <span style="font-size:1.1rem;">❄️</span>
+                        <span style="color:rgba(255,255,255,0.8);font-size:0.78rem;font-weight:700;">Winterreifen</span>
+                    </div>
+                    <div style="color:rgba(255,255,255,0.5);font-size:1rem;font-weight:900;">→</div>
+                    <div style="display:flex;align-items:center;gap:6px;background:rgba(255,200,0,0.15);border:1px solid rgba(255,200,0,0.3);border-radius:100px;padding:6px 14px;">
+                        <span style="font-size:1.1rem;">☀️</span>
+                        <span style="color:#fde68a;font-size:0.78rem;font-weight:700;">Sommerreifen</span>
+                    </div>
+                </div>
+                <div class="c2-h1">Sicher in den<br>Sommer.</div>
                 <div class="c2-quote">
                     <p>
                         Ihre Reifen sind der einzige Kontakt zwischen<br>
@@ -389,14 +401,22 @@
         <div class="creative c3">
             <div class="c3-top">
                 <img class="c3-img"
-                     src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1200&q=80"
+                     src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d6a?w=1200&q=80"
                      alt="Reifenwechsel Werkstatt">
                 <div class="c3-img-overlay"></div>
             </div>
             <div class="c3-content">
-                <div class="c3-badge">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                    Alle Marken · Jetzt Saisonwechsel
+                <!-- Winter → Sommer -->
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+                    <div style="display:flex;align-items:center;gap:5px;background:#e6edf7;border-radius:100px;padding:5px 12px;">
+                        <span style="font-size:0.95rem;">❄️</span>
+                        <span style="font-size:0.7rem;font-weight:800;color:#003478;">Winterreifen</span>
+                    </div>
+                    <span style="font-size:1.1rem;color:#003478;font-weight:900;">→</span>
+                    <div style="display:flex;align-items:center;gap:5px;background:#fef9c3;border-radius:100px;padding:5px 12px;">
+                        <span style="font-size:0.95rem;">☀️</span>
+                        <span style="font-size:0.7rem;font-weight:800;color:#92400e;">Sommerreifen</span>
+                    </div>
                 </div>
                 <div class="c3-h1">
                     Reifen wechseln<br>
