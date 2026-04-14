@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Creatives – Auto Sagmeister</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #f0f2f5;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .page-header h1 {
+            font-size: 1.6rem; font-weight: 900; color: #1a1f2e; margin-bottom: 0.4rem;
+        }
+        .page-header p { color: #6b7280; font-size: 0.9rem; }
+        .page-header .hint {
+            display: inline-block; margin-top: 0.8rem;
+            background: #003478; color: #fff;
+            padding: 0.4rem 1rem; border-radius: 20px;
+            font-size: 0.78rem; font-weight: 700;
+        }
+
+        /* ===== GRID ===== */
+        .creatives-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .creative-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            max-width: 560px;
+        }
+        .creative-label {
+            align-self: flex-start;
+            font-size: 0.75rem; font-weight: 800;
+            color: #6b7280; letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .download-hint {
+            font-size: 0.72rem; color: #9ca3af;
+            align-self: flex-start;
+        }
+
+        /* ===== CREATIVE BASE ===== */
+        .creative {
+            width: 560px;
+            height: 560px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+            flex-shrink: 0;
+        }
+
+        /* ============================
+           CREATIVE 1 – Kein Anruf
+        ============================ */
+        .c1 {
+            background: #003478;
+        }
+        .c1-bg {
+            position: absolute; inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80');
+            background-size: cover; background-position: center;
+            opacity: 0.18;
+        }
+        .c1-content {
+            position: relative; z-index: 2;
+            height: 100%;
+            display: flex; flex-direction: column;
+            padding: 44px 44px 36px;
+        }
+        .c1-logo {
+            display: flex; align-items: center; gap: 10px; margin-bottom: auto;
+        }
+        .c1-oval {
+            width: 46px; height: 36px;
+        }
+        .c1-name { color: rgba(255,255,255,0.9); font-size: 0.85rem; font-weight: 700; }
+        .c1-name span { display: block; color: rgba(255,255,255,0.5); font-size: 0.68rem; font-weight: 500; }
+
+        .c1-main { margin-bottom: 28px; }
+        .c1-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.85); padding: 5px 12px;
+            border-radius: 100px; font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .c1-tag-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
+        .c1-h1 {
+            font-size: 2.4rem; font-weight: 900; color: #fff;
+            line-height: 1.1; letter-spacing: -0.03em;
+            margin-bottom: 14px;
+        }
+        .c1-h1 span { color: #90b8e8; }
+        .c1-sub {
+            font-size: 0.95rem; color: rgba(255,255,255,0.72);
+            line-height: 1.55; max-width: 380px;
+        }
+        .c1-sub strong { color: #fff; }
+
+        .c1-bottom { display: flex; flex-direction: column; gap: 14px; }
+        .c1-checks {
+            display: flex; gap: 18px; flex-wrap: wrap;
+        }
+        .c1-check {
+            display: flex; align-items: center; gap: 6px;
+            color: rgba(255,255,255,0.8); font-size: 0.78rem; font-weight: 600;
+        }
+        .c1-check svg { width: 14px; height: 14px; color: #4ade80; flex-shrink: 0; }
+        .c1-cta {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #fff; color: #003478;
+            padding: 14px 28px; border-radius: 10px;
+            font-size: 1rem; font-weight: 900;
+            align-self: flex-start;
+            letter-spacing: -0.01em;
+        }
+        .c1-cta-arrow {
+            width: 22px; height: 22px; background: #003478; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .c1-cta-arrow svg { width: 12px; height: 12px; color: #fff; }
+
+        /* ============================
+           CREATIVE 2 – Emotional
+        ============================ */
+        .c2 {
+            background: #0f172a;
+        }
+        .c2-bg {
+            position: absolute; inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1527515637462-cff94edd54a2?w=1200&q=80');
+            background-size: cover; background-position: center top;
+            opacity: 0.3;
+        }
+        .c2-gradient {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(15,23,42,0.97) 65%);
+        }
+        .c2-content {
+            position: relative; z-index: 2;
+            height: 100%;
+            display: flex; flex-direction: column;
+            justify-content: flex-end;
+            padding: 44px;
+        }
+        .c2-eyebrow {
+            font-size: 0.72rem; font-weight: 800; color: #90b8e8;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .c2-h1 {
+            font-size: 2.6rem; font-weight: 900; color: #fff;
+            line-height: 1.05; letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+        .c2-quote {
+            border-left: 3px solid #90b8e8;
+            padding-left: 14px;
+            margin-bottom: 26px;
+        }
+        .c2-quote p {
+            font-size: 0.9rem; color: rgba(255,255,255,0.7);
+            line-height: 1.55; font-style: italic;
+        }
+        .c2-quote strong { color: #fff; font-style: normal; }
+        .c2-bottom {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 12px;
+        }
+        .c2-brand { color: rgba(255,255,255,0.5); font-size: 0.75rem; font-weight: 700; }
+        .c2-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #003478; color: #fff;
+            padding: 13px 24px; border-radius: 10px;
+            font-size: 0.92rem; font-weight: 800;
+            white-space: nowrap;
+        }
+        .c2-cta svg { width: 16px; height: 16px; }
+
+        /* ============================
+           CREATIVE 3 – Minimal Bold
+        ============================ */
+        .c3 {
+            background: #fff;
+        }
+        .c3-top {
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 52%; overflow: hidden;
+        }
+        .c3-img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center 30%;
+            display: block;
+        }
+        .c3-img-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 30%, #fff 100%);
+        }
+        .c3-content {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 32px 40px 40px;
+            background: #fff;
+        }
+        .c3-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: #e6edf7; color: #003478;
+            padding: 4px 12px; border-radius: 100px;
+            font-size: 0.7rem; font-weight: 800;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .c3-h1 {
+            font-size: 2rem; font-weight: 900; color: #1a1f2e;
+            line-height: 1.1; letter-spacing: -0.03em;
+            margin-bottom: 10px;
+        }
+        .c3-h1 span { color: #003478; }
+        .c3-sub {
+            font-size: 0.85rem; color: #6b7280; line-height: 1.5;
+            margin-bottom: 22px; max-width: 380px;
+        }
+        .c3-sub strong { color: #1a1f2e; }
+        .c3-bottom {
+            display: flex; align-items: center; gap: 14px;
+        }
+        .c3-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #003478; color: #fff;
+            padding: 13px 26px; border-radius: 10px;
+            font-size: 0.95rem; font-weight: 800;
+        }
+        .c3-cta svg { width: 16px; height: 16px; }
+        .c3-notel {
+            font-size: 0.72rem; color: #9ca3af; font-weight: 600;
+            line-height: 1.4;
+        }
+        .c3-logo-mark {
+            margin-left: auto;
+            display: flex; flex-direction: column; align-items: flex-end;
+            gap: 2px;
+        }
+        .c3-logo-mark span:first-child {
+            font-size: 0.8rem; font-weight: 900; color: #1a1f2e;
+        }
+        .c3-logo-mark span:last-child {
+            font-size: 0.62rem; color: #9ca3af; font-weight: 600;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 620px) {
+            .creative { width: 100%; height: auto; aspect-ratio: 1; }
+            .creative-wrap { max-width: 100%; }
+            .c1-h1, .c2-h1 { font-size: 1.8rem; }
+            .c3-h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-header">
+    <h1>Facebook Creatives – Auto Sagmeister</h1>
+    <p>3 Varianten · 1080×1080 · Rechtsklick → "Bild speichern" zum Download</p>
+    <span class="hint">Rechtsklick auf das Bild → Bild speichern als...</span>
+</div>
+
+<div class="creatives-grid">
+
+    <!-- ============================
+         CREATIVE 1 – Kein Anruf
+    ============================ -->
+    <div class="creative-wrap">
+        <div class="creative-label">Creative 1 — Kein Anruf. Kein Warten.</div>
+        <div class="creative c1">
+            <div class="c1-bg"></div>
+            <div class="c1-content">
+                <!-- Logo -->
+                <div class="c1-logo">
+                    <svg class="c1-oval" viewBox="0 0 60 48" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="30" cy="24" rx="28" ry="20" fill="rgba(255,255,255,0.15)"/>
+                        <ellipse cx="30" cy="24" rx="23" ry="15.5" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+                        <text x="30" y="29" font-family="Arial,sans-serif" font-weight="900" font-size="12" fill="#fff" text-anchor="middle" letter-spacing="0.5">FORD</text>
+                    </svg>
+                    <div class="c1-name">Sagmeister<span>Ihr Reifenpartner</span></div>
+                </div>
+
+                <!-- Main copy -->
+                <div class="c1-main">
+                    <div class="c1-tag">
+                        <span class="c1-tag-dot"></span>
+                        Jetzt Saisonwechsel buchen
+                    </div>
+                    <div class="c1-h1">
+                        Kein Anruf.<br>
+                        Kein Warten.<br>
+                        <span>Ihr Termin online.</span>
+                    </div>
+                    <p class="c1-sub">
+                        Einfach Wunschtermin wählen – <strong>in 2 Minuten gebucht.</strong><br>
+                        Egal welche Marke. Alle Modelle willkommen.
+                    </p>
+                </div>
+
+                <!-- Bottom -->
+                <div class="c1-bottom">
+                    <div class="c1-checks">
+                        <div class="c1-check">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            Bremsencheck inklusive
+                        </div>
+                        <div class="c1-check">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            Alle Marken willkommen
+                        </div>
+                        <div class="c1-check">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            Fertig in 20 Minuten
+                        </div>
+                    </div>
+                    <div class="c1-cta">
+                        Jetzt Termin buchen
+                        <div class="c1-cta-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="download-hint">Rechtsklick → "Bild speichern als..." oder Screenshot</div>
+    </div>
+
+    <!-- ============================
+         CREATIVE 2 – Emotional
+    ============================ -->
+    <div class="creative-wrap">
+        <div class="creative-label">Creative 2 — Emotional / Sicherheit</div>
+        <div class="creative c2">
+            <div class="c2-bg"></div>
+            <div class="c2-gradient"></div>
+            <div class="c2-content">
+                <div class="c2-eyebrow">Auto Sagmeister · Reifenwechsel</div>
+                <div class="c2-h1">Sicher in den<br>Sommer. ☀️</div>
+                <div class="c2-quote">
+                    <p>
+                        Ihre Reifen sind der einzige Kontakt zwischen<br>
+                        Ihrem Auto und der Straße.<br>
+                        <strong>Wir nehmen das genauso ernst wie Sie.</strong>
+                    </p>
+                </div>
+                <div class="c2-bottom">
+                    <div>
+                        <div class="c2-brand">sagmeister-reifen.vercel.app</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.35);margin-top:3px;">Alle Marken · Ehrliche Beratung · Faire Preise</div>
+                    </div>
+                    <div class="c2-cta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Termin buchen →
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="download-hint">Rechtsklick → "Bild speichern als..." oder Screenshot</div>
+    </div>
+
+    <!-- ============================
+         CREATIVE 3 – Minimal Bold
+    ============================ -->
+    <div class="creative-wrap">
+        <div class="creative-label">Creative 3 — Klar & direkt</div>
+        <div class="creative c3">
+            <div class="c3-top">
+                <img class="c3-img"
+                     src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1200&q=80"
+                     alt="Reifenwechsel Werkstatt">
+                <div class="c3-img-overlay"></div>
+            </div>
+            <div class="c3-content">
+                <div class="c3-badge">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    Alle Marken · Jetzt Saisonwechsel
+                </div>
+                <div class="c3-h1">
+                    Reifen wechseln<br>
+                    <span>– wann es Ihnen passt.</span>
+                </div>
+                <p class="c3-sub">
+                    <strong>Wunschtermin online wählen.</strong> Kein Warten in der Warteschleife, kein hin und her am Telefon. Einfach buchen – wir bestätigen.
+                </p>
+                <div class="c3-bottom">
+                    <div>
+                        <div class="c3-cta">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            Jetzt buchen
+                        </div>
+                        <div class="c3-notel" style="margin-top:8px;">
+                            Unverbindlich · Kostenloser Bremsencheck inklusive
+                        </div>
+                    </div>
+                    <div class="c3-logo-mark">
+                        <span>Auto Sagmeister</span>
+                        <span>Ihr Reifenpartner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="download-hint">Rechtsklick → "Bild speichern als..." oder Screenshot</div>
+    </div>
+
+</div>
+
+</body>
+</html>
