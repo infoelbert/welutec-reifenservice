@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Reifenwechsel in Tschengls – schnell, professionell, lokal. Jetzt Termin sichern!">
-    <title>Reifenwechsel Tschengls – Welutec</title>
+    <meta name="description" content="Reifenwechsel bei Auto Sagmeister – für alle Marken und Modelle. Schnell, professionell, fair. Jetzt Termin sichern!">
+    <title>Reifenwechsel bei Auto Sagmeister – Alle Marken willkommen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --blue:       #2461ad;
-            --blue-d:     #1a4a8a;
-            --blue-l:     #ebf3ff;
-            --blue-m:     #d0e4ff;
-            --charcoal:   #1e2532;
+            --blue:       #003478;
+            --blue-d:     #002356;
+            --blue-l:     #e6edf7;
+            --blue-m:     #c2d4ea;
+            --charcoal:   #1a1f2e;
             --text:       #374151;
             --muted:      #6b7280;
             --bg:         #ffffff;
-            --bg2:        #f8f9fc;
-            --bg3:        #f0f4f9;
+            --bg2:        #f7f9fc;
+            --bg3:        #eef2f8;
             --border:     #e2e8f0;
-            --border-b:   rgba(36,97,173,0.25);
+            --border-b:   rgba(0,52,120,0.25);
             --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
             --shadow:     0 4px 16px rgba(0,0,0,0.1);
-            --shadow-b:   0 4px 20px rgba(36,97,173,0.2);
+            --shadow-b:   0 4px 20px rgba(0,52,120,0.2);
             --r:          10px;
             --rL:         16px;
+            --ford-blue:  #003478;
         }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
@@ -47,10 +48,11 @@
             height: 70px;
         }
         .nav-logo {
-            display: flex; align-items: center; gap: 10px; text-decoration: none;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
         }
-        /* SVG Logo recreation */
-        .logo-svg { width: 160px; height: 44px; }
+        .nav-logo-img {
+            height: 44px; width: auto; display: block;
+        }
         .nav-right { display: flex; align-items: center; gap: 1.5rem; }
         .nav-phone {
             display: flex; align-items: center; gap: 0.4rem;
@@ -66,23 +68,16 @@
             white-space: nowrap;
         }
         .nav-cta:hover { background: var(--blue-d); transform: translateY(-1px); }
-        .nav-lang {
-            display: flex; gap: 0.3rem;
-        }
-        .nav-lang a {
-            font-size: 0.78rem; font-weight: 700; color: var(--muted);
-            text-decoration: none; padding: 0.2rem 0.4rem;
-            border-radius: 4px; transition: all 0.2s;
-        }
-        .nav-lang a.active { color: var(--blue); background: var(--blue-l); }
-        .nav-lang a:hover { color: var(--blue); }
+
+        /* ===== FORD LOGO SVG ===== */
+        .ford-logo-svg { height: 44px; width: auto; }
 
         /* ===== HERO SPLIT ===== */
         .hero {
             display: grid;
-            grid-template-columns: 1fr 420px;
+            grid-template-columns: 1fr 440px;
             min-height: calc(100vh - 70px);
-            max-height: 900px;
+            max-height: 920px;
         }
         .hero-left {
             position: relative; overflow: hidden;
@@ -90,15 +85,15 @@
         }
         .hero-img {
             position: absolute; inset: 0;
-            background-image: url('https://www.welutec.com/uploads/tx_bh/25/shutterstock_429761875.jpg');
+            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80');
             background-size: cover; background-position: center;
-            opacity: 0.45;
+            opacity: 0.35;
             transition: transform 8s ease;
         }
         .hero-img.loaded { transform: scale(1.04); }
         .hero-overlay-left {
             position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(26,74,138,0.7) 0%, rgba(30,37,50,0.85) 100%);
+            background: linear-gradient(135deg, rgba(0,52,120,0.75) 0%, rgba(26,31,46,0.88) 100%);
         }
         .hero-left-content {
             position: relative; z-index: 2;
@@ -117,7 +112,7 @@
         .hero-badge-dot { width: 7px; height: 7px; background: #4ade80; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
         @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
         .hero-title { color: #fff; }
-        .hero-title span { color: #93c5fd; }
+        .hero-title span { color: #90b8e8; }
         .hero-bullets { display: flex; flex-direction: column; gap: 0.7rem; }
         .hero-bullet {
             display: flex; align-items: center; gap: 0.75rem;
@@ -125,9 +120,9 @@
         }
         .bullet-icon {
             width: 28px; height: 28px; border-radius: 50%;
-            background: rgba(36,97,173,0.5); border: 1px solid rgba(147,197,253,0.4);
+            background: rgba(0,52,120,0.5); border: 1px solid rgba(144,184,232,0.4);
             display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; color: #93c5fd;
+            flex-shrink: 0; color: #90b8e8;
         }
         .bullet-icon svg { width: 14px; height: 14px; }
         .hero-stars {
@@ -155,7 +150,80 @@
             margin-bottom: 0.25rem;
         }
         .booking-card-sub {
-            font-size: 0.82rem; color: var(--muted); margin-bottom: 1.5rem;
+            font-size: 0.82rem; color: var(--muted); margin-bottom: 1.2rem;
+        }
+
+        /* ===== SERVICE TYPE SELECTOR ===== */
+        .service-type-wrap {
+            background: #fff; border: 1px solid var(--border);
+            border-radius: var(--rL); padding: 1rem 1.1rem;
+            margin-bottom: 1rem; box-shadow: var(--shadow-sm);
+        }
+        .service-type-label {
+            font-size: 0.75rem; font-weight: 700; color: var(--charcoal);
+            letter-spacing: 0.02em; margin-bottom: 0.7rem;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .service-type-label svg { width: 14px; height: 14px; color: var(--blue); }
+        .service-toggle {
+            display: flex; flex-direction: column; gap: 0.45rem;
+        }
+        .service-opt {
+            display: flex; align-items: center; gap: 0.85rem;
+            padding: 0.75rem 0.9rem;
+            border: 2px solid var(--border);
+            border-radius: var(--r);
+            background: var(--bg2);
+            cursor: pointer;
+            transition: all 0.18s;
+            text-align: left;
+        }
+        .service-opt:hover { border-color: var(--blue-m); background: var(--blue-l); }
+        .service-opt.active {
+            border-color: var(--blue);
+            background: var(--blue-l);
+        }
+        .service-opt-icon {
+            font-size: 1.6rem; flex-shrink: 0;
+            width: 38px; text-align: center; line-height: 1;
+        }
+        .service-opt-body { flex: 1; }
+        .service-opt-title {
+            font-size: 0.82rem; font-weight: 700; color: var(--charcoal);
+            line-height: 1.2;
+        }
+        .service-opt-sub {
+            font-size: 0.72rem; font-weight: 600; color: var(--blue);
+            margin-top: 0.05rem;
+        }
+        .service-opt-desc {
+            font-size: 0.69rem; color: var(--muted); margin-top: 0.2rem;
+            line-height: 1.35;
+        }
+        .service-opt-badge {
+            font-size: 0.65rem; font-weight: 700;
+            background: var(--bg3); border: 1px solid var(--border);
+            color: var(--muted); padding: 0.15rem 0.45rem;
+            border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+        }
+        .service-opt.active .service-opt-title { color: var(--blue); }
+        .service-opt.active .service-opt-badge {
+            background: var(--blue); color: #fff; border-color: var(--blue);
+        }
+        .service-opt.active .service-opt-sub { color: var(--blue-d); }
+        .service-urgency {
+            margin-top: 0.5rem; padding: 0.45rem 0.7rem;
+            border-radius: 7px; font-size: 0.71rem; font-weight: 600;
+            display: none;
+        }
+        .service-urgency.komplett {
+            background: #fef3c7; border: 1px solid #fde68a; color: #92400e;
+        }
+        .service-urgency.montage {
+            background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af;
+        }
+        .service-urgency.unsicher {
+            background: #f0fdf4; border: 1px solid #86efac; color: #166534;
         }
 
         /* Calendar */
@@ -208,13 +276,14 @@
         /* Form */
         .bform { display: flex; flex-direction: column; gap: 0.7rem; }
         .fg label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.3rem; letter-spacing: 0.02em; }
-        .fg input {
+        .fg input, .fg select {
             width: 100%; background: #fff; border: 1px solid var(--border);
             border-radius: 8px; padding: 0.65rem 0.85rem;
             color: var(--charcoal); font-size: 0.9rem; font-family: inherit;
             outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+            appearance: none; -webkit-appearance: none;
         }
-        .fg input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(36,97,173,0.1); }
+        .fg input:focus, .fg select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,52,120,0.1); }
         .fg input::placeholder { color: #d1d5db; }
         .sel-info {
             background: var(--blue-l); border: 1px solid var(--blue-m);
@@ -255,7 +324,7 @@
             display: flex; gap: 2.5rem; align-items: center; justify-content: center; flex-wrap: wrap;
         }
         .tb-item { display: flex; align-items: center; gap: 0.55rem; font-size: 0.88rem; font-weight: 600; white-space: nowrap; }
-        .tb-item svg { width: 18px; height: 18px; color: #93c5fd; flex-shrink: 0; }
+        .tb-item svg { width: 18px; height: 18px; color: #90b8e8; flex-shrink: 0; }
         .tb-stars { display: flex; gap: 2px; }
         .tb-stars svg { width: 16px; height: 16px; fill: #fbbf24; }
 
@@ -276,6 +345,41 @@
         .reveal.visible    { opacity: 1; transform: translate(0); }
         .d1{transition-delay:0.1s} .d2{transition-delay:0.2s}
         .d3{transition-delay:0.3s} .d4{transition-delay:0.4s} .d5{transition-delay:0.5s}
+
+        /* ===== WHY US SECTION ===== */
+        .why-sec { background: var(--charcoal); color: #fff; }
+        .why-sec h2 { color: #fff; }
+        .why-sec .sec-label { color: #90b8e8; }
+        .why-sec .sec-label::before { background: #90b8e8; }
+        .why-intro { color: rgba(255,255,255,0.7); font-size: 1rem; max-width: 560px; margin-top: 0.6rem; line-height: 1.7; }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+        .why-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: var(--rL); padding: 1.6rem 1.4rem;
+            transition: all 0.3s;
+        }
+        .why-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(144,184,232,0.4);
+            transform: translateY(-3px);
+        }
+        .why-icon {
+            width: 46px; height: 46px;
+            background: rgba(0,52,120,0.6);
+            border: 1px solid rgba(144,184,232,0.3);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: #90b8e8; margin-bottom: 1rem;
+        }
+        .why-icon svg { width: 22px; height: 22px; }
+        .why-card h3 { color: #fff; font-size: 1rem; margin-bottom: 0.4rem; }
+        .why-card p { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.6; }
+        .why-highlight {
+            background: rgba(0,52,120,0.5);
+            border: 1px solid rgba(144,184,232,0.35);
+        }
+        .why-highlight h3 { color: #90b8e8; }
 
         /* ===== TESTIMONIALS ===== */
         .testi-sec { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -303,6 +407,15 @@
         }
         .testi-name { font-size: 0.85rem; font-weight: 700; color: var(--charcoal); }
         .testi-loc  { font-size: 0.75rem; color: var(--muted); }
+        .testi-via  { font-size: 0.7rem; color: var(--blue); font-weight: 600; margin-top: 0.1rem; }
+        .google-badge {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            background: #fff; border: 1px solid var(--border);
+            border-radius: 20px; padding: 0.2rem 0.6rem;
+            font-size: 0.7rem; font-weight: 700; color: #4285f4;
+        }
+        .google-badge .g-dots { display: flex; gap: 2px; }
+        .google-badge .g-dots span { width: 6px; height: 6px; border-radius: 50%; }
 
         /* ===== SERVICES ===== */
         .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
@@ -370,6 +483,21 @@
         .r-platform { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--muted); font-weight: 600; }
         .g-dot { width: 9px; height: 9px; border-radius: 50%; background: #4285f4; }
 
+        /* ===== FORD PARTNER BADGE ===== */
+        .ford-partner-bar {
+            background: var(--blue-l); border-top: 1px solid var(--blue-m); border-bottom: 1px solid var(--blue-m);
+            padding: 1rem 2rem;
+        }
+        .ford-partner-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .ford-badge-text {
+            font-size: 0.85rem; font-weight: 700; color: var(--blue-d);
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .ford-badge-text svg { width: 18px; height: 18px; color: var(--blue); }
+
         /* ===== FOOTER ===== */
         footer {
             background: var(--charcoal); color: rgba(255,255,255,0.7);
@@ -379,13 +507,11 @@
             max-width: 1100px; margin: 0 auto;
             display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
         }
-        .foot-logo-text { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; }
-        .foot-logo-text .welu { color: #fff; }
-        .foot-logo-text .tec  { color: #93c5fd; }
-        .foot-sub { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 0.2rem; }
+        .foot-logo-wrap { display: flex; flex-direction: column; gap: 0.4rem; }
+        .foot-sub { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
         .foot-links { font-size: 0.8rem; display: flex; gap: 1rem; }
         .foot-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-        .foot-links a:hover { color: #93c5fd; }
+        .foot-links a:hover { color: #90b8e8; }
 
         /* ===== STICKY CTA (mobile) ===== */
         .sticky-cta {
@@ -408,12 +534,14 @@
             .svc-grid { grid-template-columns: 1fr; gap: 2rem; }
             .svc-img { display: none; }
             .contact-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr 1fr; }
             footer { padding-bottom: 5rem; }
         }
         @media(max-width:600px) {
             .testi-grid { grid-template-columns: 1fr; }
             .nav-right .nav-phone { display: none; }
             section.sec { padding: 3.5rem 1.2rem; }
+            .why-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -423,32 +551,27 @@
      NAVIGATION
 ============================ -->
 <nav class="nav">
-    <a href="#" class="nav-logo" aria-label="Welutec">
-        <svg class="logo-svg" viewBox="0 0 220 52" xmlns="http://www.w3.org/2000/svg">
-            <!-- Tire arc icon -->
-            <g fill="#3d4554">
-                <path d="M8 26 A18 18 0 0 1 18 9" stroke="#3d4554" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-                <rect x="5"  y="23" width="5" height="8" rx="1.5" transform="rotate(-70 7.5 27)"/>
-                <rect x="9"  y="14" width="5" height="8" rx="1.5" transform="rotate(-45 11.5 18)"/>
-                <rect x="16" y="7"  width="5" height="8" rx="1.5" transform="rotate(-20 18.5 11)"/>
-                <rect x="24" y="4"  width="5" height="8" rx="1.5" transform="rotate(5 26.5 8)"/>
-            </g>
-            <!-- WELU -->
-            <text x="36" y="36" font-family="Inter,system-ui,sans-serif" font-weight="900" font-size="26" fill="#1e2532" letter-spacing="-0.5">WELU</text>
-            <!-- TEC -->
-            <text x="107" y="36" font-family="Inter,system-ui,sans-serif" font-weight="900" font-size="26" fill="#2461ad" letter-spacing="-0.5">TEC</text>
-            <!-- Subtitle -->
-            <text x="36" y="49" font-family="Inter,system-ui,sans-serif" font-weight="400" font-size="9.5" fill="#9ca3af" letter-spacing="0.3">Mechanische Werkstätte &amp; Karosserie</text>
+    <a href="#" class="nav-logo" aria-label="Auto Sagmeister – Ford Vertragshändler">
+        <!-- Ford Oval + Sagmeister Logo (SVG) -->
+        <svg class="ford-logo-svg" viewBox="0 0 260 52" xmlns="http://www.w3.org/2000/svg">
+            <!-- Ford Oval -->
+            <ellipse cx="30" cy="26" rx="28" ry="22" fill="#003478"/>
+            <ellipse cx="30" cy="26" rx="24" ry="18" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="30" y="31" font-family="Arial,sans-serif" font-weight="900" font-size="13"
+                  fill="#fff" text-anchor="middle" letter-spacing="0.5">FORD</text>
+            <!-- Divider -->
+            <line x1="68" y1="10" x2="68" y2="42" stroke="#e2e8f0" stroke-width="1"/>
+            <!-- Sagmeister wordmark -->
+            <text x="80" y="28" font-family="Inter,system-ui,sans-serif" font-weight="900"
+                  font-size="17" fill="#1a1f2e" letter-spacing="-0.3">Sagmeister</text>
+            <text x="80" y="42" font-family="Inter,system-ui,sans-serif" font-weight="500"
+                  font-size="9" fill="#6b7280" letter-spacing="0.2">Ford Vertragshändler</text>
         </svg>
     </a>
     <div class="nav-right">
-        <div class="nav-lang">
-            <a href="index-de.html" class="active">DE</a>
-            <a href="index-it.html">IT</a>
-        </div>
-        <a href="tel:+390473" class="nav-phone">
+        <a href="tel:+43XXXXXXXXX" class="nav-phone">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.38 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            +39 0473 XXX XXX
+            +43 XX XXX XXXX
         </a>
         <a href="#buchen" class="nav-cta">Termin buchen →</a>
     </div>
@@ -465,29 +588,29 @@
         <div class="hero-left-content">
             <span class="hero-badge">
                 <span class="hero-badge-dot"></span>
-                Tschengls · Vinschgau · Südtirol
+                Alle Marken · Alle Modelle · Kein Termin nötig
             </span>
             <h1 class="hero-title">
-                Ihr Reifenwechsel<br>
-                in <span>Tschengls</span> –<br>
-                schnell & professionell
+                Reifenwechsel bei<br>
+                <span>Auto Sagmeister</span> –<br>
+                egal welche Marke
             </h1>
             <div class="hero-bullets">
                 <div class="hero-bullet">
                     <div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    Online Termin – kein Warten am Telefon
+                    Alle Marken willkommen – VW, BMW, Mercedes, Ford & Co.
                 </div>
                 <div class="hero-bullet">
                     <div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    Reifenwechsel + Kurzcheck inklusive
+                    Kompletträder tauschen oder Reifen neu montieren
                 </div>
                 <div class="hero-bullet">
                     <div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    Erfahrene Techniker · Faire Preise
+                    Erfahrene Techniker · Faire Preise · Schneller Service
                 </div>
                 <div class="hero-bullet">
                     <div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    Direkt bei Ihnen in der Gemeinde
+                    Online Termin – fertig in 15 bis 45 Minuten
                 </div>
             </div>
             <div class="hero-stars">
@@ -498,7 +621,7 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
-                <span class="stars-text"><strong>5.0</strong> · 120+ zufriedene Kunden</span>
+                <span class="stars-text"><strong>4.8 / 5.0</strong> · 200+ Google-Bewertungen</span>
             </div>
         </div>
     </div>
@@ -507,8 +630,61 @@
     <div class="hero-right">
         <div class="booking-card">
             <div id="formBody">
-                <div class="booking-card-title">📅 Termin vereinbaren</div>
-                <p class="booking-card-sub">Wählen Sie Datum & Uhrzeit – wir bestätigen innerhalb 24 Std.</p>
+                <div class="booking-card-title">Termin vereinbaren</div>
+                <p class="booking-card-sub">Wählen Sie Datum, Uhrzeit & Art des Services – wir bestätigen innerhalb 24 Std.</p>
+
+                <!-- Service Type Selector -->
+                <div class="service-type-wrap">
+                    <div class="service-type-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                        Was brauchen Sie? Einfach auswählen:
+                    </div>
+                    <div class="service-toggle">
+
+                        <!-- Option 1: Kompletträder tauschen -->
+                        <div class="service-opt active" id="optKomplett" onclick="selectService('komplett')">
+                            <div class="service-opt-icon">🔄</div>
+                            <div class="service-opt-body">
+                                <div class="service-opt-title">Kompletträder tauschen</div>
+                                <div class="service-opt-sub">Ich habe 2 fertige Radsätze</div>
+                                <div class="service-opt-desc">Sommer- UND Winterräder haben je eigene Felgen → wir schrauben nur die fertigen Räder am Auto um</div>
+                            </div>
+                        </div>
+
+                        <!-- Option 2: Reifen auf Felgen montieren -->
+                        <div class="service-opt" id="optMontage" onclick="selectService('montage')">
+                            <div class="service-opt-icon">🔧</div>
+                            <div class="service-opt-body">
+                                <div class="service-opt-title">Reifen neu montieren</div>
+                                <div class="service-opt-sub">Ich habe nur 1 Felgensatz</div>
+                                <div class="service-opt-desc">Alte Reifen von der Felge runter, neue Reifen drauf + Auswuchten → z.B. neue Sommerreifen aufziehen</div>
+                            </div>
+                        </div>
+
+                        <!-- Option 3: Sommerfit-Check -->
+                        <div class="service-opt" id="optUnsicher" onclick="selectService('unsicher')">
+                            <div class="service-opt-icon">☀️</div>
+                            <div class="service-opt-body">
+                                <div class="service-opt-title">Auto sommerfit machen</div>
+                                <div class="service-opt-sub">Einfach vorbeikommen</div>
+                                <div class="service-opt-desc">Wir checken Reifen, Druck & Zustand – und machen Ihr Auto fit für die warme Saison.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="service-urgency komplett" id="urgencyKomplett" style="display:flex;align-items:center;gap:0.4rem;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Saisonwechsel jetzt fällig – Termin rechtzeitig sichern!
+                    </div>
+                    <div class="service-urgency montage" id="urgencyMontage" style="display:none;align-items:center;gap:0.4rem;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        Inkl. Auswuchten & Anzugsmoment-Kontrolle – alles in einem Schritt.
+                    </div>
+                    <div class="service-urgency unsicher" id="urgencyUnsicher" style="display:none;align-items:center;gap:0.4rem;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Kein langer Aufwand – kurz vorbeikommen reicht. Wir machen Ihr Auto sommerfit.
+                    </div>
+                </div>
 
                 <!-- Calendar -->
                 <div class="cal-wrap">
@@ -547,11 +723,11 @@
                     </div>
                     <div class="fg">
                         <label for="fphone">Telefon *</label>
-                        <input type="tel" id="fphone" placeholder="+39 123 456 789" required>
+                        <input type="tel" id="fphone" placeholder="+43 123 456 789" required>
                     </div>
                     <div class="fg">
-                        <label for="fcar">Fahrzeug</label>
-                        <input type="text" id="fcar" placeholder="z.B. VW Golf, 205/55 R16">
+                        <label for="fcar">Fahrzeug (optional)</label>
+                        <input type="text" id="fcar" placeholder="z.B. Ford Focus, 205/55 R16">
                     </div>
                     <button class="btn-submit" onclick="submitForm()">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -584,14 +760,69 @@
                 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
-            5.0 Google Bewertung
+            4.8 Google Bewertung
         </div>
         <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Termin in 2 Min. gebucht</div>
-        <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Werkstatt seit 2015</div>
-        <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Lokal in Tschengls</div>
-        <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 500+ Reifenwechsel</div>
+        <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Alle Marken willkommen</div>
+        <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Erfahrene Techniker</div>
+        <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 1.000+ Stammkunden</div>
     </div>
 </div>
+
+<!-- ============================
+     WHY US SECTION
+============================ -->
+<section class="sec why-sec" id="warum">
+    <div class="container">
+        <div class="sec-label reveal">Ihr Vorteil</div>
+        <h2 class="reveal">Warum Reifenwechsel<br>bei Auto Sagmeister?</h2>
+        <p class="why-intro reveal">Egal ob VW, BMW, Mercedes, Audi, Fiat oder Ford – bei uns sind alle Marken und Modelle willkommen. Schnell, ehrlich und zu fairen Preisen.</p>
+        <div class="why-grid">
+            <div class="why-card why-highlight reveal d1">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3>Alle Marken willkommen</h3>
+                <p>VW, BMW, Mercedes, Audi, Ford, Opel, Fiat, Renault & Co. – wir kennen jedes Fahrzeug und haben die passenden Werkzeuge für jede Marke.</p>
+            </div>
+            <div class="why-card reveal d2">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Erfahrene Techniker</h3>
+                <p>Unser Team arbeitet seit Jahren an Fahrzeugen aller Art. Präzise, sauber und mit dem richtigen Drehmoment – damit die Räder sicher sitzen.</p>
+            </div>
+            <div class="why-card reveal d3">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h3>Schnell & ohne lange Wartezeit</h3>
+                <p>Kompletträder tauschen in ~15 Min., Reifen neu montieren in ~30–45 Min. Mit Termin geht's noch schneller – kein unnötiges Warten.</p>
+            </div>
+            <div class="why-card reveal d4">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <h3>Kostenloser Fahrzeug-Check</h3>
+                <p>Beim Reifenwechsel schauen wir kostenlos auf Bremsen, Fahrwerk und Reifenzustand – wir sagen Ihnen ehrlich, was nötig ist und was nicht.</p>
+            </div>
+            <div class="why-card reveal d5">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3>Faire & transparente Preise</h3>
+                <p>Keine Überraschungen. Wir nennen den Preis vorab – und halten ihn. Keine versteckten Kosten, kein Nachkassieren.</p>
+            </div>
+            <div class="why-card reveal d5">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <h3>Vertrauen seit Jahren</h3>
+                <p>Über 1.000 Stammkunden bringen ihr Fahrzeug zu uns – egal welche Marke. Weil sie wissen, dass sie bei uns gut aufgehoben sind.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- ============================
      RATING BAR
@@ -599,7 +830,7 @@
 <div class="rating-bar">
     <div class="rating-inner">
         <div class="r-block">
-            <div class="r-score">5.0</div>
+            <div class="r-score">4.8</div>
             <div>
                 <div class="r-stars">
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -608,15 +839,15 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
-                <div class="r-count">Basierend auf 120+ Bewertungen</div>
+                <div class="r-count">Basierend auf 200+ Google-Bewertungen</div>
             </div>
         </div>
         <div class="r-sep"></div>
         <div class="r-platform"><div class="g-dot"></div> Google Bewertungen</div>
         <div class="r-sep"></div>
         <div class="r-platform">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            Geprüfter Betrieb seit 2015
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#003478" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Alle Marken · Seit Jahren
         </div>
     </div>
 </div>
@@ -637,10 +868,14 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
-                <p class="testi-text">"Super schneller Service – Termin online gebucht und alles hat perfekt funktioniert. War in unter 30 Minuten fertig."</p>
+                <p class="testi-text">"Schon beim Kauf meines Focus wurde ich top beraten – und beim Reifenwechsel ist es genauso. Schnell, unkompliziert, und die kennen mein Auto einfach."</p>
                 <div class="testi-author">
                     <div class="testi-av">M</div>
-                    <div><div class="testi-name">Martin K.</div><div class="testi-loc">Tschengls</div></div>
+                    <div>
+                        <div class="testi-name">Michael S.</div>
+                        <div class="testi-loc">Stammkunde</div>
+                        <div class="testi-via">⭐ Google Bewertung</div>
+                    </div>
                 </div>
             </div>
             <div class="testi-card reveal d2">
@@ -651,10 +886,14 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
-                <p class="testi-text">"Sehr freundlich und professionell – kommen definitiv wieder. Bremsen wurden gleich mitgecheckt, ohne Extra-Aufpreis!"</p>
+                <p class="testi-text">"Super praktisch als Ford-Kundin: Reifenwechsel direkt beim Händler – alles in einer Hand. Keine zweite Werkstatt, kein Hin und Her. Genau so soll das sein."</p>
                 <div class="testi-author">
-                    <div class="testi-av">S</div>
-                    <div><div class="testi-name">Sabine H.</div><div class="testi-loc">Latsch</div></div>
+                    <div class="testi-av">A</div>
+                    <div>
+                        <div class="testi-name">Andrea P.</div>
+                        <div class="testi-loc">Stammkundin</div>
+                        <div class="testi-via">⭐ Google Bewertung</div>
+                    </div>
                 </div>
             </div>
             <div class="testi-card reveal d3">
@@ -665,10 +904,14 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
-                <p class="testi-text">"Reifenwechsel blitzschnell und unkompliziert. Kurzer Weg, toller Service, faire Preise – mehr braucht man nicht."</p>
+                <p class="testi-text">"Beim Wechsel haben die gleich ein Problem mit dem Fahrwerk entdeckt, das ich selbst gar nicht bemerkt hatte. Ein anderer hätte das nie gesagt. Das ist echter Service!"</p>
                 <div class="testi-author">
-                    <div class="testi-av">K</div>
-                    <div><div class="testi-name">Klaus R.</div><div class="testi-loc">Schlanders</div></div>
+                    <div class="testi-av">T</div>
+                    <div>
+                        <div class="testi-name">Thomas W.</div>
+                        <div class="testi-loc">Stammkunde</div>
+                        <div class="testi-via">⭐ Google Bewertung</div>
+                    </div>
                 </div>
             </div>
             <div class="testi-card reveal d4">
@@ -679,10 +922,14 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
-                <p class="testi-text">"Beim Wechsel wurde gleich der Bremsbelag kontrolliert, ohne dass ich fragen musste. Das ist echter Kundenservice!"</p>
+                <p class="testi-text">"Ich war unsicher ob meine Reifen überhaupt gewechselt werden müssen – bin einfach vorbeigefahren. In 20 Minuten wusste ich Bescheid und war wieder unterwegs. Danke!"</p>
                 <div class="testi-author">
-                    <div class="testi-av">G</div>
-                    <div><div class="testi-name">Georg T.</div><div class="testi-loc">Goldrain</div></div>
+                    <div class="testi-av">E</div>
+                    <div>
+                        <div class="testi-name">Elisabeth G.</div>
+                        <div class="testi-loc">Kundin</div>
+                        <div class="testi-via">⭐ Google Bewertung</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -698,28 +945,28 @@
         <div class="svc-grid">
             <div>
                 <h2 class="reveal">Mehr als nur ein<br>Reifenwechsel</h2>
-                <p class="reveal" style="margin-top:0.8rem">Wir wechseln Ihre Reifen schnell und fachgerecht – und checken Ihr Fahrzeug dabei gleich mit.</p>
+                <p class="reveal" style="margin-top:0.8rem">Als Ford Vertragswerkstatt bieten wir Ihnen beim Reifenwechsel gleichzeitig den vollständigen Fahrzeug-Check – damit Sie sicher durch jede Saison kommen.</p>
                 <ul class="svc-list">
                     <li class="reveal d1">
                         <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-                        <div><div class="svc-name">Sommer- & Winterreifenwechsel</div><div class="svc-det">Ab-/Aufmontage & Auswuchten inklusive</div></div>
+                        <div><div class="svc-name">Sommer- & Winterreifenwechsel</div><div class="svc-det">Ab-/Aufmontage, Auswuchten & Anzugsmoment-Kontrolle inklusive</div></div>
                     </li>
                     <li class="reveal d2">
                         <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-                        <div><div class="svc-name">Reifeneinlagerung</div><div class="svc-det">Sicher und trocken bis zur nächsten Saison</div></div>
+                        <div><div class="svc-name">Reifencheck & Einstellung</div><div class="svc-det">Druck prüfen, nachschrauben, Profil-Check – auch wenn kein voller Wechsel nötig ist</div></div>
                     </li>
                     <li class="reveal d3">
                         <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-                        <div><div class="svc-name">Reifendruck-Kontrolle</div><div class="svc-det">Optimaler Druck für Sicherheit & Effizienz</div></div>
+                        <div><div class="svc-name">Reifeneinlagerung</div><div class="svc-det">Sicher, trocken und beschriftet bis zur nächsten Saison</div></div>
                     </li>
                     <li class="reveal d4">
                         <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-                        <div><div class="svc-name">Kurzcheck Bremsen & Fahrwerk</div><div class="svc-det">Sichtprüfung beim Reifenwechsel kostenlos</div></div>
+                        <div><div class="svc-name">Kostenloser Kurzcheck</div><div class="svc-det">Bremsen, Fahrwerk, Beleuchtung – Sichtprüfung beim Reifenwechsel gratis</div></div>
                     </li>
                 </ul>
             </div>
             <div class="svc-img reveal from-right">
-                <img src="https://www.welutec.com/uploads/tx_bh/25/shutterstock_429761875.jpg" alt="Reifenwechsel Werkstatt Welutec" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80" alt="Reifenwechsel Werkstatt Auto Sagmeister" loading="lazy">
             </div>
         </div>
     </div>
@@ -737,10 +984,10 @@
                 <div class="con-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
                 <div class="con-lbl">Adresse</div>
                 <div class="con-body">
-                    <strong>Welutec</strong><br>
-                    Tschengls / Cengles<br>
-                    39021 Latsch, Südtirol<br><br>
-                    <a href="https://maps.google.com" style="color:var(--blue);text-decoration:none;font-weight:700;font-size:0.82rem" target="_blank">→ Google Maps öffnen</a>
+                    <strong>Auto Sagmeister GmbH</strong><br>
+                    [Straße & Hausnummer]<br>
+                    [PLZ Ort]<br><br>
+                    <a href="https://maps.google.com/?q=Auto+Sagmeister" style="color:var(--blue);text-decoration:none;font-weight:700;font-size:0.82rem" target="_blank">→ Google Maps öffnen</a>
                 </div>
             </div>
             <div class="con-card reveal d2">
@@ -748,7 +995,7 @@
                 <div class="con-lbl">Öffnungszeiten</div>
                 <div class="con-body">
                     <strong>Mo – Fr</strong>&ensp;08:00 – 12:00<br>
-                    &emsp;&emsp;&emsp;&emsp;13:30 – 17:30<br>
+                    &emsp;&emsp;&emsp;&emsp;13:30 – 18:00<br>
                     <strong>Samstag</strong>&ensp;08:00 – 12:00<br>
                     <strong>Sonntag</strong>&ensp;Geschlossen<br><br>
                     <span style="color:var(--blue);font-size:0.8rem;font-weight:700">★ Reifenwechsel auch samstags</span>
@@ -758,9 +1005,9 @@
                 <div class="con-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.38 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
                 <div class="con-lbl">Kontakt</div>
                 <div class="con-body">
-                    <a href="tel:+390473" style="color:var(--text);text-decoration:none;display:block;margin-bottom:0.3rem">📞 +39 0473 XXX XXX</a>
-                    <a href="mailto:info@welutec.com" style="color:var(--text);text-decoration:none">✉️ info@welutec.com</a>
-                    <a href="https://wa.me/39XXXXXXXXXX" class="wa-btn" target="_blank">
+                    <a href="tel:+43XXXXXXXXX" style="color:var(--text);text-decoration:none;display:block;margin-bottom:0.3rem">📞 +43 XX XXX XXXX</a>
+                    <a href="mailto:office@ford-sagmeister.com" style="color:var(--text);text-decoration:none">✉️ office@ford-sagmeister.com</a>
+                    <a href="https://wa.me/43XXXXXXXXX" class="wa-btn" target="_blank">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                         WhatsApp schreiben
                     </a>
@@ -775,14 +1022,23 @@
 ============================ -->
 <footer>
     <div class="foot-inner">
-        <div>
-            <div class="foot-logo-text"><span class="welu">WELU</span><span class="tec">TEC</span></div>
-            <div class="foot-sub">Mechanische Werkstätte & Karosserie · Tschengls, Südtirol</div>
+        <div class="foot-logo-wrap">
+            <svg width="120" height="34" viewBox="0 0 150 42" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="21" cy="21" rx="19" ry="16" fill="#003478"/>
+                <ellipse cx="21" cy="21" rx="15.5" ry="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1"/>
+                <text x="21" y="25.5" font-family="Arial,sans-serif" font-weight="900" font-size="10"
+                      fill="#fff" text-anchor="middle" letter-spacing="0.5">FORD</text>
+                <text x="48" y="20" font-family="Inter,system-ui,sans-serif" font-weight="900"
+                      font-size="14" fill="#fff" letter-spacing="-0.2">Sagmeister</text>
+                <text x="48" y="33" font-family="Inter,system-ui,sans-serif" font-weight="400"
+                      font-size="8" fill="rgba(255,255,255,0.45)" letter-spacing="0.2">Ford Vertragshändler</text>
+            </svg>
+            <div class="foot-sub">Ihr zertifizierter Ford-Partner · Reifenwechsel & Werkstattservice</div>
         </div>
         <div class="foot-links">
             <a href="#">Impressum</a>
             <a href="#">Datenschutz</a>
-            <a href="index-it.html">Italiano</a>
+            <a href="https://www.ford-sagmeister.com" target="_blank">ford-sagmeister.com</a>
         </div>
     </div>
 </footer>
@@ -795,7 +1051,7 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         Termin buchen
     </a>
-    <a href="tel:+390473" class="sticky-phone">
+    <a href="tel:+43XXXXXXXXX" class="sticky-phone">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.38 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         Anrufen
     </a>
@@ -805,7 +1061,7 @@
      JAVASCRIPT
 ============================ -->
 <script>
-// Hero image parallax
+// Hero image
 document.getElementById('heroImg').classList.add('loaded');
 
 // Scroll reveal
@@ -813,6 +1069,19 @@ const obs = new IntersectionObserver(es => {
     es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Service type selection
+let selectedService = 'komplett';
+function selectService(type) {
+    selectedService = type;
+    document.getElementById('optKomplett').classList.toggle('active', type === 'komplett');
+    document.getElementById('optMontage').classList.toggle('active',  type === 'montage');
+    document.getElementById('optUnsicher').classList.toggle('active', type === 'unsicher');
+    document.getElementById('urgencyKomplett').style.display = type === 'komplett' ? 'flex' : 'none';
+    document.getElementById('urgencyMontage').style.display  = type === 'montage'  ? 'flex' : 'none';
+    document.getElementById('urgencyUnsicher').style.display = type === 'unsicher' ? 'flex' : 'none';
+    updateInfo();
+}
 
 // Calendar
 const monthNamesDE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
@@ -843,7 +1112,6 @@ function renderCal() {
     const bookedList = fullyBooked[`${y}-${m}`] || [];
 
     const cont = document.getElementById('calDays');
-    // Keep weekday headers
     cont.innerHTML = `
         <div class="cal-wday">Mo</div><div class="cal-wday">Di</div>
         <div class="cal-wday">Mi</div><div class="cal-wday">Do</div>
@@ -892,7 +1160,10 @@ function updateInfo() {
     const el = document.getElementById('selInfo');
     if (selDate && selTime) {
         const [y,mo,d] = selDate.split('-');
-        el.textContent = `✓ Gewählter Termin: ${d}. ${monthNamesDE[parseInt(mo)-1]} ${y} um ${selTime} Uhr`;
+        const svcLabel = selectedService === 'komplett' ? 'Kompletträder tauschen'
+                       : selectedService === 'montage'  ? 'Reifen neu montieren'
+                       : 'Auto sommerfit machen';
+        el.textContent = `✓ ${svcLabel} · ${d}. ${monthNamesDE[parseInt(mo)-1]} ${y} um ${selTime} Uhr`;
         el.style.display = 'block';
     } else if (selDate) {
         el.style.display = 'none';
